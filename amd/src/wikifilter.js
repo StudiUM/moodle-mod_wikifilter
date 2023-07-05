@@ -171,6 +171,7 @@ define([
         this.buildAutocompleteComponent = function() {
             var thisObject = this;
             var stringkeys = [{key: 'search', component: 'wikifilter'}, {key: 'selectionarea', component: 'wikifilter'}];
+            thisObject.element.data('enhanced', false);
             str.get_strings(stringkeys).then(function(langstrings) {
                 var placeholder = langstrings[0];
                 var noSelectionString = langstrings[1];

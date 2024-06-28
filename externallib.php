@@ -14,7 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-
 /**
  * Wikifilter webservice functions
  *
@@ -44,10 +43,10 @@ class wikifilter_external extends external_api {
      */
     public static function get_wiki_pages_tags_parameters() {
         return new external_function_parameters(
-            array(
-                'id' => new external_value(PARAM_INT, 'id'),
-                'course' => new external_value(PARAM_INT, 'course')
-            )
+            [
+             'id'     => new external_value(PARAM_INT, 'id'),
+             'course' => new external_value(PARAM_INT, 'course'),
+            ]
         );
     }
 
@@ -60,7 +59,7 @@ class wikifilter_external extends external_api {
      */
     public static function get_wiki_pages_tags($id, $course) {
 
-        $params = self::validate_parameters(self::get_wiki_pages_tags_parameters(), array('id' => $id, 'course' => $course));
+        $params = self::validate_parameters(self::get_wiki_pages_tags_parameters(), ['id' => $id, 'course' => $course]);
 
         $wikipagestags = get_wiki_pages_tags($params['id'], $params['course']);
 

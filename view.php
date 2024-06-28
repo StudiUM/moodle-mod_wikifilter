@@ -37,11 +37,11 @@ $pageid = optional_param('pageid', 0, PARAM_INT);
 $cm = get_coursemodule_from_id('wikifilter', $id);
 
 // Checking course instance.
-$course = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
+$course = $DB->get_record('course', ['id' => $cm->course], '*', MUST_EXIST);
 
 require_course_login($course, true, $cm);
 
-$moduleinstance = $DB->get_record('wikifilter', array('id' => $cm->instance), '*', MUST_EXIST);
+$moduleinstance = $DB->get_record('wikifilter', ['id' => $cm->instance], '*', MUST_EXIST);
 $modulecontext = context_module::instance($cm->id);
 
 // Getting wiki instance.
@@ -60,14 +60,14 @@ if ($wiki->wikimode == 'individual') {
 // Getting subwiki.
 $subwiki = wiki_get_subwiki_by_group($wiki->id, $currentgroup, $userid);
 
-$PAGE->set_url('/mod/wikifilter/view.php', array('id' => $cm->id));
+$PAGE->set_url('/mod/wikifilter/view.php', ['id' => $cm->id]);
 $PAGE->set_title(format_string($moduleinstance->name));
 $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($modulecontext);
 $PAGE->set_cm($cm);
 
 if ($pageid) {
-    $wikipages = $DB->get_records('wiki_pages', array('subwikiid' => $subwiki->id));
+    $wikipages = $DB->get_records('wiki_pages', ['subwikiid' => $subwiki->id]);
     $wikipage = $wikipages[$pageid];
 
 } else {

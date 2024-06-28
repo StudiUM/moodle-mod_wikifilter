@@ -14,7 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-
 /**
  * Wikifilter webservice functions
  *
@@ -26,14 +25,14 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$functions = array(
-    'wikifilter_external_getwikipagestags' => array(
-        'classname'    => 'wikifilter_external',
-        'methodname'   => 'get_wiki_pages_tags',
-        'classpath'    => 'mod/wikifilter/externallib.php',
-        'description'  => 'Get wiki pages tags',
-        'type'         => 'read',
-        'ajax'         => true
-    ),
-);
+$functions = [
+              'wikifilter_external_getwikipagestags' => [
+                                                         'classname'   => 'wikifilter_external',
+                                                         'methodname'  => 'get_wiki_pages_tags',
+                                                         'classpath'   => 'mod/wikifilter/externallib.php',
+                                                         'description' => 'Get wiki pages tags',
+                                                         'type'        => 'read',
+                                                         'ajax'        => true,
+                                                        ],
+             ];
 

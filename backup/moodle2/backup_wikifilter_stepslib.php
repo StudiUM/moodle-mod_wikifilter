@@ -44,21 +44,32 @@ class backup_wikifilter_activity_structure_step extends backup_activity_structur
         $userinfo = $this->get_setting_value('userinfo');
 
         // Define each element separated.
-        $wikifilter = new backup_nested_element('wikifilter', array('id'), array('course', 'wiki', 'name',
-            'timecreated', 'timemodified', 'intro', 'introformat'));
+        $wikifilter = new backup_nested_element('wikifilter', ['id'], [
+                                                                       'course',
+                                                                       'wiki',
+                                                                       'name',
+                                                                       'timecreated',
+                                                                       'timemodified',
+                                                                       'intro',
+                                                                       'introformat',
+                                                                      ]);
 
         $associations = new backup_nested_element('associations');
 
-        $association = new backup_nested_element('association', array('id'), array('role_id', 'tag_id', 'wiki_id',
-            'wikifilter_id'));
+        $association = new backup_nested_element('association', ['id'], [
+                                                                         'role_id',
+                                                                         'tag_id',
+                                                                         'wiki_id',
+                                                                         'wikifilter_id',
+                                                                        ]);
 
         // Build the tree.
         $wikifilter->add_child($associations);
         $associations->add_child($association);
 
         // Define sources.
-        $wikifilter->set_source_table('wikifilter', array('id' => backup::VAR_ACTIVITYID));
-        $association->set_source_table('wikifilter_associations', array('wikifilter_id' => backup::VAR_PARENTID));
+        $wikifilter->set_source_table('wikifilter', ['id' => backup::VAR_ACTIVITYID]);
+        $association->set_source_table('wikifilter_associations', ['wikifilter_id' => backup::VAR_PARENTID]);
 
         // Define file annotations.
         $wikifilter->annotate_files('mod_wikifilter', 'intro', null); // This file area hasn't itemid.

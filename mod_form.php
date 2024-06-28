@@ -54,7 +54,7 @@ class mod_wikifilter_mod_form extends moodleform_mod {
         $currentcourse = $this->current->course;
 
         // Get course roles.
-        if (!$course = $DB->get_record('course', array('id' => $currentcourse))) {
+        if (!$course = $DB->get_record('course', ['id' => $currentcourse])) {
             new moodle_exception('invalidcourseid');
         }
 
@@ -65,7 +65,7 @@ class mod_wikifilter_mod_form extends moodleform_mod {
         $mform->addElement('header', 'general', get_string('general', 'form'));
 
         // Adding the standard "name" field.
-        $mform->addElement('text', 'name', get_string('wikifiltername', 'wikifilter'), array('size' => '64'));
+        $mform->addElement('text', 'name', get_string('wikifiltername', 'wikifilter'), ['size' => '64']);
         $mform->setType('name', PARAM_TEXT);
         $mform->addRule('name', $required, 'required', null, 'client');
         $mform->addRule('name', get_string('maximumchars', '', 255), 'maxlength', 255, 'client');
@@ -78,7 +78,7 @@ class mod_wikifilter_mod_form extends moodleform_mod {
         // Get wiki pages tags.
         $wikis = get_all_instances_in_course("wiki", $course);
         if (!empty($wikis)) {
-            $wikioptions = array();
+            $wikioptions = [];
             foreach ($wikis as $wiki) {
                 $wikioptions[$wiki->id] = $wiki->name;
             }
@@ -107,22 +107,26 @@ class mod_wikifilter_mod_form extends moodleform_mod {
             $wikipagestags = get_wiki_pages_tags($currentwiki, $currentcourse);
 
             // Adding associations table.
-            $associationstable  = array('roles' => array(), 'hasroles' => false);
+            $associationstable  = [
+                                   'roles'    => [],
+                                   'hasroles' => false,
+                                  ];
             if ($this->current->instance) {
                 $currentinstance = $this->current->id;
                 $associations = get_wikifilter_associations($currentinstance);
                 $associationstable['hasroles'] = !empty($associations);
                 foreach ($associations as $association) {
-                    $roletagsarray = array();
+                    $roletagsarray = [];
                     $tagsids = explode(',', $association->role_tags);
                     foreach ($tagsids as $tagid) {
-                        array_push($roletagsarray, array('tagid' => $tagid, 'tagname' => $wikipagestags[$tagid]));
+                        array_push($roletagsarray, ['tagid' => $tagid, 'tagname' => $wikipagestags[$tagid]]);
                     }
 
-                    $associationstable['roles'][] = array('roleid' => $association->role_id,
-                        'rolename' => $roles[$association->role_id],
-                        'tags' => $roletagsarray
-                    );
+                    $associationstable['roles'][] = [
+                                                     'roleid'   => $association->role_id,
+                                                     'rolename' => $roles[$association->role_id],
+                                                     'tags'     => $roletagsarray,
+                                                    ];
                 }
             }
 
@@ -137,10 +141,10 @@ class mod_wikifilter_mod_form extends moodleform_mod {
             // Adding role field in modal.
             $mform->addElement('select', 'role', get_string('role', 'wikifilter'), $roles);
 
-            $options = array(
-                'multiple' => true,
-                'noselectionstring' => get_string('selectionarea', 'wikifilter'),
-            );
+            $options = [
+                        'multiple'          => true,
+                        'noselectionstring' => get_string('selectionarea', 'wikifilter'),
+                       ];
 
             // Adding tags field in modal.
             $mform->addElement('autocomplete', 'wikitags', get_string('tags', 'wikifilter'), $wikipagestags, $options);

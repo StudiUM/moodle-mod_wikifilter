@@ -40,7 +40,7 @@ class restore_wikifilter_activity_structure_step extends restore_activity_struct
      */
     protected function define_structure() {
 
-        $paths = array();
+        $paths = [];
         $userinfo = $this->get_setting_value('userinfo');
 
         $paths[] = new restore_path_element('wikifilter', '/activity/wikifilter');
@@ -89,7 +89,7 @@ class restore_wikifilter_activity_structure_step extends restore_activity_struct
 
         $data->wikifilter_id = $this->get_new_parentid('wikifilter');
 
-        $restoredwikifilterinstance = $DB->get_record('wikifilter', array('id' => $data->wikifilter_id));
+        $restoredwikifilterinstance = $DB->get_record('wikifilter', ['id' => $data->wikifilter_id]);
         $data->wiki_id = $restoredwikifilterinstance->wiki;
 
         $newitemid = $DB->insert_record('wikifilter_associations', $data);

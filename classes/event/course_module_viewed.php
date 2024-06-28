@@ -50,7 +50,10 @@ class course_module_viewed extends \core\event\course_module_viewed {
      * @return array Informations for mapping object
      */
     public static function get_objectid_mapping() {
-        return array('db' => 'wikifilter', 'restore' => 'wikifilter');
+        return [
+                'db'      => 'wikifilter',
+                'restore' => 'wikifilter',
+               ];
     }
 }
 

@@ -26,6 +26,6 @@
 if ($hassiteconfig) {
     // phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedIf
     if ($ADMIN->fulltree) {
-        // TODO: Define the plugin settings page - {@link https://docs.moodle.org/dev/Admin_settings}.
+        // TODO Define the plugin settings page - {@link https://docs.moodle.org/dev/Admin_settings}.
     }
 }

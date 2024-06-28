@@ -57,11 +57,16 @@ class lib_test extends \advanced_testcase {
 
         // Setup test data.
         $course = $this->getDataGenerator()->create_course();
-        $wiki = $this->getDataGenerator()->create_module('wiki', array('course' => $course->id, 'wikimode' => 'collaborative'));
+        $wiki = $this->getDataGenerator()->create_module('wiki', ['course' => $course->id, 'wikimode' => 'collaborative']);
         $context = \context_module::instance($wiki->cmid);
         $firstpage = $this->getDataGenerator()->get_plugin_generator('mod_wiki')->create_first_page($wiki);
 
-        $expectedtags = array('biologie', 'master', 'medecine', 'cours');
+        $expectedtags = [
+                         'biologie',
+                         'master',
+                         'medecine',
+                         'cours',
+                        ];
 
         foreach ($expectedtags as $tag) {
             \core_tag_tag::add_item_tag('mod_wiki', 'wiki_pages', $firstpage->id, $context, $tag);
@@ -85,20 +90,29 @@ class lib_test extends \advanced_testcase {
         $course = $this->getDataGenerator()->create_course();
 
         // Create a wiki instance.
-        $wikiinstancedata = array('course' => $course->id, 'wikimode' => 'collaborative');
+        $wikiinstancedata = [
+                             'course'   => $course->id,
+                             'wikimode' => 'collaborative',
+                            ];
         $wikiinstance = $this->getDataGenerator()->create_module('wiki', $wikiinstancedata);
 
         // Create the front page of the created wiki instance with tags.
         $context = \context_module::instance($wikiinstance->cmid);
         $firstpage = $this->getDataGenerator()->get_plugin_generator('mod_wiki')->create_first_page($wikiinstance);
-        $firstpagetags = array('biologie', 'medecine');
+        $firstpagetags = [
+                          'biologie',
+                          'medecine',
+                         ];
 
         foreach ($firstpagetags as $tag) {
             \core_tag_tag::add_item_tag('mod_wiki', 'wiki_pages', $firstpage->id, $context, $tag);
         }
 
         // Create a wikifilter instance.
-        $wikifilterinstancedata = array('course' => $course->id, 'wiki' => $wikiinstance->id);
+        $wikifilterinstancedata = [
+                                   'course' => $course->id,
+                                   'wiki'   => $wikiinstance->id,
+                                  ];
         $wikifilterinstance = $this->getDataGenerator()->create_module('wikifilter', $wikifilterinstancedata);
 
         // Create users.
@@ -106,17 +120,17 @@ class lib_test extends \advanced_testcase {
         $teacher = self::getDataGenerator()->create_user();
 
         // Users enrolments.
-        $studentrole = $DB->get_record('role', array('shortname' => 'student'));
-        $teacherrole = $DB->get_record('role', array('shortname' => 'editingteacher'));
+        $studentrole = $DB->get_record('role', ['shortname' => 'student']);
+        $teacherrole = $DB->get_record('role', ['shortname' => 'editingteacher']);
         $this->getDataGenerator()->enrol_user($student->id, $course->id, $studentrole->id, 'manual');
         $this->getDataGenerator()->enrol_user($teacher->id, $course->id, $teacherrole->id, 'manual');
 
         // Create wikifilter instance associations.
         $firstpagetagsids = array_keys(\core_tag_tag::get_item_tags_array('mod_wiki', 'wiki_pages', $firstpage->id));
-        $associations = array(
-            $teacherrole->id.'-'.$firstpagetagsids[0],
-            $teacherrole->id.'-'.$firstpagetagsids[1]
-        );
+        $associations = [
+                         $teacherrole->id.'-'.$firstpagetagsids[0],
+                         $teacherrole->id.'-'.$firstpagetagsids[1],
+                        ];
 
         wikifilter_insert_associations($wikifilterinstance->id, $wikiinstance->id, $associations);
 

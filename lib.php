@@ -103,7 +103,7 @@ function wikifilter_update_instance($moduleinstance, $mform = null) {
     $associations = $formdata->associations;
 
     if (empty($associations)) {
-        $DB->delete_records('wikifilter_associations', array('wikifilter_id' => $id));
+        $DB->delete_records('wikifilter_associations', ['wikifilter_id' => $id]);
     } else {
         wikifilter_update_associations($id, $wikiid, $associations);
     }
@@ -120,12 +120,12 @@ function wikifilter_update_instance($moduleinstance, $mform = null) {
 function wikifilter_delete_instance($id) {
     global $DB;
 
-    $exists = $DB->get_record('wikifilter', array('id' => $id));
+    $exists = $DB->get_record('wikifilter', ['id' => $id]);
     if (!$exists) {
         return false;
     }
 
-    $DB->delete_records('wikifilter', array('id' => $id));
+    $DB->delete_records('wikifilter', ['id' => $id]);
 
     return true;
 }
@@ -169,7 +169,7 @@ function wikifilter_insert_associations($id, $wikiid, $associations) {
 function wikifilter_update_associations($id, $wikiid, $associations) {
     global $DB;
 
-    $DB->delete_records('wikifilter_associations', array('wikifilter_id' => $id));
+    $DB->delete_records('wikifilter_associations', ['wikifilter_id' => $id]);
     wikifilter_insert_associations($id, $wikiid, $associations);
 
     return true;
@@ -204,7 +204,7 @@ function get_wiki_pages_tags($wid, $courseid) {
     // Getting subwiki.
     $subwiki = wiki_get_subwiki_by_group($wiki->id, $currentgroup, $userid);
 
-    $wikipagestags = array();
+    $wikipagestags = [];
     if ($pages = wiki_get_page_list($subwiki->id)) {
         // Go through each page and get tags.
         foreach ($pages as $page) {
@@ -279,7 +279,7 @@ function print_wiki_page_content($moduleinstance, $page, $context, $subwikiid) {
                                         'mod_wiki',
                                         'attachments',
                                         $subwikiid);
-    $html = format_text($html, FORMAT_HTML, array('overflowdiv' => true, 'allowid' => true));
+    $html = format_text($html, FORMAT_HTML, ['overflowdiv' => true, 'allowid' => true]);
     $html = process_wiki_page_links($moduleinstance, $html);
     $html = format_wiki_page_content($context->instanceid, $html);
 
@@ -315,7 +315,7 @@ function format_wiki_page_content($moduleinstanceid, $content) {
  * @return string
  */
 function process_wiki_page_links($moduleinstance, $content) {
-    $baseurl = new moodle_url('/mod/wiki/view.php', array('pageid' => 'PAGEID'));
+    $baseurl = new moodle_url('/mod/wiki/view.php', ['pageid' => 'PAGEID']);
     $baseurl = $baseurl->out(false);
     $baseurl = preg_quote($baseurl);
     $baseurl = str_replace('PAGEID', '(\d+)', $baseurl);

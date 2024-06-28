@@ -25,28 +25,28 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$capabilities = array(
+$capabilities = [
 
-    'mod/wikifilter:addinstance' => array(
-        'riskbitmask' => RISK_XSS,
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_COURSE,
-        'archetypes' => array(
-            'editingteacher' => CAP_ALLOW,
-            'manager' => CAP_ALLOW
-        ),
-        'clonepermissionsfrom' => 'moodle/course:manageactivities'
-    ),
+                 'mod/wikifilter:addinstance' => [
+                                                  'riskbitmask'          => RISK_XSS,
+                                                  'captype'              => 'write',
+                                                  'contextlevel'         => CONTEXT_COURSE,
+                                                  'archetypes'           => [
+                                                                             'editingteacher' => CAP_ALLOW,
+                                                                             'manager'        => CAP_ALLOW,
+                                                                            ],
+                                                  'clonepermissionsfrom' => 'moodle/course:manageactivities',
+                                                 ],
 
-    'mod/wikifilter:view' => array(
-        'captype' => 'read',
-        'contextlevel' => CONTEXT_MODULE,
-        'archetypes' => array(
-            'guest' => CAP_ALLOW,
-            'user' => CAP_ALLOW,
-        )
-    )
-);
+                 'mod/wikifilter:view'        => [
+                                                  'captype'      => 'read',
+                                                  'contextlevel' => CONTEXT_MODULE,
+                                                  'archetypes'   => [
+                                                                     'guest' => CAP_ALLOW,
+                                                                     'user'  => CAP_ALLOW,
+                                                                    ],
+                                                 ],
+                ];
 
 
 

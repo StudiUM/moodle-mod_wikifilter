@@ -27,9 +27,9 @@ require_once('../../config.php');
 require_once('lib.php');
 
 $id = required_param('id', PARAM_INT); // Course ID.
-$PAGE->set_url('/mod/wikifilter/index.php', array('id' => $id));
+$PAGE->set_url('/mod/wikifilter/index.php', ['id' => $id]);
 
-if (!$course = $DB->get_record('course', array('id' => $id))) {
+if (!$course = $DB->get_record('course', ['id' => $id])) {
     throw new moodle_exception('invalidcourseid');
 }
 
@@ -37,7 +37,7 @@ require_login($course, true);
 $PAGE->set_pagelayout('incourse');
 $context = context_course::instance($course->id);
 
-$event = \mod_wikifilter\event\course_module_instance_list_viewed::create(array('context' => $context));
+$event = \mod_wikifilter\event\course_module_instance_list_viewed::create(['context' => $context]);
 $event->add_record_snapshot('course', $course);
 $event->trigger();
 
@@ -61,30 +61,35 @@ if (!$wikifilters = get_all_instances_in_course("wikifilter", $course)) {
 $usesections = course_format_uses_sections($course->format);
 
 // Print the list of instances (your module will probably extend this).
-
 $timenow = time();
 $strname = get_string("name");
 $table = new html_table();
 
 if ($usesections) {
     $strsectionname = get_string('sectionname', 'format_' . $course->format);
-    $table->head = array($strsectionname, $strname);
+    $table->head = [
+                    $strsectionname,
+                    $strname,
+                   ];
 } else {
-    $table->head = array($strname);
+    $table->head = [$strname];
 }
 
 foreach ($wikifilters as $wikifilter) {
     $linkcss = null;
     if (!$wikifilter->visible) {
-        $linkcss = array('class' => 'dimmed');
+        $linkcss = ['class' => 'dimmed'];
     }
-    $link = html_writer::link(new moodle_url('/mod/wikifilter/view.php', array('id' => $wikifilter->coursemodule)),
+    $link = html_writer::link(new moodle_url('/mod/wikifilter/view.php', ['id' => $wikifilter->coursemodule]),
                               $wikifilter->name, $linkcss);
 
     if ($usesections) {
-        $table->data[] = array(get_section_name($course, $wikifilter->section), $link);
+        $table->data[] = [
+                          get_section_name($course, $wikifilter->section),
+                          $link,
+                         ];
     } else {
-        $table->data[] = array($link);
+        $table->data[] = [$link];
     }
 }
 

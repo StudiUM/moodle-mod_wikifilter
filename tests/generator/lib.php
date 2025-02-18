@@ -48,7 +48,7 @@ class mod_wikifilter_generator extends testing_module_generator {
      * @return stdClass record from module-defined table with additional field
      *     cmid (corresponding id in course_modules table)
      */
-    public function create_instance($record = null, array $options = null) {
+    public function create_instance($record = null, ?array $options = null) {
         $record = is_object($record) ? $record : (object) $record;
 
         if (!isset($record->name)) {

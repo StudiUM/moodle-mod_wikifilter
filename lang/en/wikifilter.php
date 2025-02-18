@@ -43,8 +43,8 @@ Once the plugin has been installed and configured, participants will only be abl
 $string['modulenameplural'] = 'Wiki filters';
 $string['nodata'] = 'No data available';
 $string['nowikiincourse'] = 'There is no Wiki activity in this course.';
-$string['pluginname'] = 'Wiki filter';
 $string['pluginadministration'] = 'Wiki administration';
+$string['pluginname'] = 'Wiki filter';
 $string['privacy:metadata'] = 'The Wiki filter plugin does not store any personal data.';
 $string['role'] = 'Role';
 $string['search'] = 'Search';
@@ -52,10 +52,11 @@ $string['selectionarea'] = 'No selection';
 $string['selecttagerror'] = 'You must at least select one tag';
 $string['tags'] = 'tag(s)';
 $string['wiki'] = 'Wiki';
-$string['wikifilterintro'] = 'Description';
-$string['wikifiltername'] = 'Name';
 $string['wikifilter:addinstance'] = 'Add a new wikifilter';
 $string['wikifilter:view'] = 'View a wikifilter';
+$string['wikifilterintro'] = 'Description';
+$string['wikifiltername'] = 'Name';
+
 
 
 

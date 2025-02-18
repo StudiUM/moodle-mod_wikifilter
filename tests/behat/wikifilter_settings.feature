@@ -29,7 +29,7 @@ Feature: Wikifilter settings
     When I am on "Course 1" course homepage
     Then I turn editing mode on
     # Create wikifilter.
-    And I add a "Wiki filter" to section "1" and I fill the form with:
+    And I add a wikifilter activity to course "Course 1" section "1" and I fill the form with:
       | Name | wikifilter 1 |
       | Description | wikifilter 1 description |
 

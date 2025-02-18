@@ -38,7 +38,7 @@ global $CFG;
  * @copyright 2022 Université de Montréal
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class lib_test extends \advanced_testcase {
+final class lib_test extends \advanced_testcase {
 
     /**
      * Set up for every test
@@ -46,14 +46,16 @@ class lib_test extends \advanced_testcase {
     public function setUp(): void {
         $this->resetAfterTest();
         $this->setAdminUser();
+        parent::setUp();
     }
 
     /**
      * Test get_wiki_pages_tags.
      *
+     * @covers ::get_wiki_pages_tags
      * @return void
      */
-    public function test_get_wiki_pages_tags() {
+    public function test_get_wiki_pages_tags(): void {
 
         // Setup test data.
         $course = $this->getDataGenerator()->create_course();
@@ -81,9 +83,10 @@ class lib_test extends \advanced_testcase {
     /**
      * Test can_user_view_wiki_page.
      *
+     * @covers ::can_user_view_wiki_page
      * @return void
      */
-    public function test_can_user_view_wiki_page() {
+    public function test_can_user_view_wiki_page(): void {
         global $DB;
 
         // Create a course.

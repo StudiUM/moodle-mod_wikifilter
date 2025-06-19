@@ -203,6 +203,10 @@ function get_wiki_pages_tags($wid, $courseid) {
 
     // Getting subwiki.
     $subwiki = wiki_get_subwiki_by_group($wiki->id, $currentgroup, $userid);
+    if (!$subwiki) {
+        // No subwiki found, return empty array.
+        return [];
+    }
 
     $wikipagestags = [];
     if ($pages = wiki_get_page_list($subwiki->id)) {

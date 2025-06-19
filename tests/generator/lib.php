@@ -54,6 +54,9 @@ class mod_wikifilter_generator extends testing_module_generator {
         if (!isset($record->name)) {
             $record->name = 'Wikifilter activity';
         }
+        if (!isset($record->wiki)) {
+            $record->wiki = 0;
+        }
 
         return parent::create_instance($record, (array)$options);
     }

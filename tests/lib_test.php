@@ -39,7 +39,6 @@ global $CFG;
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 final class lib_test extends \advanced_testcase {
-
     /**
      * Set up for every test
      */
@@ -77,7 +76,6 @@ final class lib_test extends \advanced_testcase {
         $result = array_values(get_wiki_pages_tags($wiki->id, $course->id));
 
         $this->assertEquals($expectedtags, $result);
-
     }
 
     /**
@@ -131,8 +129,8 @@ final class lib_test extends \advanced_testcase {
         // Create wikifilter instance associations.
         $firstpagetagsids = array_keys(\core_tag_tag::get_item_tags_array('mod_wiki', 'wiki_pages', $firstpage->id));
         $associations = [
-                         $teacherrole->id.'-'.$firstpagetagsids[0],
-                         $teacherrole->id.'-'.$firstpagetagsids[1],
+                         $teacherrole->id . '-' . $firstpagetagsids[0],
+                         $teacherrole->id . '-' . $firstpagetagsids[1],
                         ];
 
         wikifilter_insert_associations($wikifilterinstance->id, $wikiinstance->id, $associations);

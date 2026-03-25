@@ -38,7 +38,6 @@ require_once($CFG->dirroot . '/mod/wikifilter/backup/moodle2/restore_wikifilter_
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class restore_wikifilter_activity_task extends restore_activity_task {
-
     /**
      * Define (add) particular settings this activity can have.
      */
@@ -73,7 +72,6 @@ class restore_wikifilter_activity_task extends restore_activity_task {
      */
     public static function define_decode_rules() {
         return [];
-
     }
 
     /**

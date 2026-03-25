@@ -26,13 +26,12 @@
 defined('MOODLE_INTERNAL') || die();
 
 $functions = [
-              'wikifilter_external_getwikipagestags' => [
-                                                         'classname'   => 'wikifilter_external',
-                                                         'methodname'  => 'get_wiki_pages_tags',
-                                                         'classpath'   => 'mod/wikifilter/externallib.php',
-                                                         'description' => 'Get wiki pages tags',
-                                                         'type'        => 'read',
-                                                         'ajax'        => true,
-                                                        ],
-             ];
-
+    'wikifilter_external_getwikipagestags' => [
+        'classname'   => 'wikifilter_external',
+        'methodname'  => 'get_wiki_pages_tags',
+        'classpath'   => 'mod/wikifilter/externallib.php',
+        'description' => 'Get wiki pages tags',
+        'type'        => 'read',
+        'ajax'        => true,
+    ],
+];

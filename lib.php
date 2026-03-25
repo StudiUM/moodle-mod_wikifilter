@@ -25,7 +25,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot.'/mod/wiki/locallib.php');
+require_once($CFG->dirroot . '/mod/wiki/locallib.php');
 
 /**
  * Return if the plugin supports $feature.
@@ -277,19 +277,24 @@ function print_wiki_page_content($moduleinstance, $page, $context, $subwikiid) {
         }
     }
 
-    $html = file_rewrite_pluginfile_urls($page->cachedcontent,
-                                        'pluginfile.php',
-                                        $context->id,
-                                        'mod_wiki',
-                                        'attachments',
-                                        $subwikiid);
+    $html = file_rewrite_pluginfile_urls(
+        $page->cachedcontent,
+        'pluginfile.php',
+        $context->id,
+        'mod_wiki',
+        'attachments',
+        $subwikiid
+    );
     $html = format_text($html, FORMAT_HTML, ['overflowdiv' => true, 'allowid' => true]);
     $html = process_wiki_page_links($moduleinstance, $html);
     $html = format_wiki_page_content($context->instanceid, $html);
 
     echo $OUTPUT->box($html);
-    echo $OUTPUT->tag_list(core_tag_tag::get_item_tags('mod_wiki', 'wiki_pages', $page->id),
-            null, 'wiki-tags');
+    echo $OUTPUT->tag_list(
+        core_tag_tag::get_item_tags('mod_wiki', 'wiki_pages', $page->id),
+        null,
+        'wiki-tags'
+    );
 
     wiki_increment_pageviews($page);
 }
@@ -360,7 +365,3 @@ function get_wikifilter_associations($moduleinstanceid) {
     $associations = $DB->get_records_sql($sql);
     return $associations;
 }
-
-
-
-

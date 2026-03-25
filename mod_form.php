@@ -25,7 +25,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot.'/course/moodleform_mod.php');
+require_once($CFG->dirroot . '/course/moodleform_mod.php');
 
 /**
  * Module instance settings form.
@@ -36,7 +36,6 @@ require_once($CFG->dirroot.'/course/moodleform_mod.php');
  * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class mod_wikifilter_mod_form extends moodleform_mod {
-
     /**
      * Defines forms elements
      */
@@ -92,7 +91,7 @@ class mod_wikifilter_mod_form extends moodleform_mod {
             $mform->addElement('select', 'wiki', null, $wikioptions);
         } else {
             $nowikimessage = get_string('nowikiincourse', 'wikifilter');
-            $mform->addElement('html', $OUTPUT->render_from_template('wikifilter/nowiki', ['message' => $nowikimessage] ));
+            $mform->addElement('html', $OUTPUT->render_from_template('wikifilter/nowiki', ['message' => $nowikimessage]));
 
             $mform->addElement('text', 'nowiki', '', ['class' => 'hidden']);
             $mform->setType('nowiki', PARAM_RAW);
@@ -149,10 +148,9 @@ class mod_wikifilter_mod_form extends moodleform_mod {
             // Adding tags field in modal.
             $mform->addElement('autocomplete', 'wikitags', get_string('tags', 'wikifilter'), $wikipagestags, $options);
 
-            $mform->addElement('html', '<p class="select-tag-error hidden">'.get_string('selecttagerror', 'wikifilter').'</p>');
+            $mform->addElement('html', '<p class="select-tag-error hidden">' . get_string('selecttagerror', 'wikifilter') . '</p>');
             $mform->addElement('html', '</div>');
             $mform->addElement('html', $OUTPUT->render_from_template('wikifilter/association_editor_modal/footer', []));
-
         }
 
         // Adding standard elements.
@@ -162,4 +160,3 @@ class mod_wikifilter_mod_form extends moodleform_mod {
         $this->add_action_buttons();
     }
 }
-

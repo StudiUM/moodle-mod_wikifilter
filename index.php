@@ -80,8 +80,11 @@ foreach ($wikifilters as $wikifilter) {
     if (!$wikifilter->visible) {
         $linkcss = ['class' => 'dimmed'];
     }
-    $link = html_writer::link(new moodle_url('/mod/wikifilter/view.php', ['id' => $wikifilter->coursemodule]),
-                              $wikifilter->name, $linkcss);
+    $link = html_writer::link(
+        new moodle_url('/mod/wikifilter/view.php', ['id' => $wikifilter->coursemodule]),
+        $wikifilter->name,
+        $linkcss
+    );
 
     if ($usesections) {
         $table->data[] = [

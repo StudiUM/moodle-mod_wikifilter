@@ -56,9 +56,3 @@ $string['wikifilter:addinstance'] = 'Add a new wikifilter';
 $string['wikifilter:view'] = 'View a wikifilter';
 $string['wikifilterintro'] = 'Description';
 $string['wikifiltername'] = 'Name';
-
-
-
-
-
-

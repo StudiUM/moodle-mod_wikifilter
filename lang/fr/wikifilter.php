@@ -56,6 +56,3 @@ $string['wikifilter:addinstance'] = 'Ajouter un nouvel afficheur wiki';
 $string['wikifilter:view'] = 'Afficher un afficheur wiki';
 $string['wikifilterintro'] = 'Description';
 $string['wikifiltername'] = 'Nom';
-
-
-

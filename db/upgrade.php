@@ -76,7 +76,6 @@ function xmldb_wikifilter_upgrade($oldversion) {
 
         // Wikifilter savepoint reached.
         upgrade_mod_savepoint(true, 2021112504, 'wikifilter');
-
     }
 
     if ($oldversion < 2021112507) {
@@ -114,9 +113,7 @@ function xmldb_wikifilter_upgrade($oldversion) {
 
         // Wikifilter savepoint reached.
         upgrade_mod_savepoint(true, 2021112507, 'wikifilter');
-
     }
 
     return true;
-
 }

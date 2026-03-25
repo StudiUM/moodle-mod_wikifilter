@@ -77,5 +77,4 @@ class backup_wikifilter_activity_structure_step extends backup_activity_structur
         // Return the root element (wikifilter), wrapped into standard activity structure.
         return $this->prepare_activity_structure($wikifilter);
     }
-
 }

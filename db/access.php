@@ -26,27 +26,22 @@
 defined('MOODLE_INTERNAL') || die();
 
 $capabilities = [
-
-                 'mod/wikifilter:addinstance' => [
-                                                  'riskbitmask'          => RISK_XSS,
-                                                  'captype'              => 'write',
-                                                  'contextlevel'         => CONTEXT_COURSE,
-                                                  'archetypes'           => [
-                                                                             'editingteacher' => CAP_ALLOW,
-                                                                             'manager'        => CAP_ALLOW,
-                                                                            ],
-                                                  'clonepermissionsfrom' => 'moodle/course:manageactivities',
-                                                 ],
-
-                 'mod/wikifilter:view'        => [
-                                                  'captype'      => 'read',
-                                                  'contextlevel' => CONTEXT_MODULE,
-                                                  'archetypes'   => [
-                                                                     'guest' => CAP_ALLOW,
-                                                                     'user'  => CAP_ALLOW,
-                                                                    ],
-                                                 ],
-                ];
-
-
-
+    'mod/wikifilter:addinstance' => [
+        'riskbitmask'          => RISK_XSS,
+        'captype'              => 'write',
+        'contextlevel'         => CONTEXT_COURSE,
+        'archetypes'           => [
+            'editingteacher' => CAP_ALLOW,
+            'manager'        => CAP_ALLOW,
+        ],
+        'clonepermissionsfrom' => 'moodle/course:manageactivities',
+    ],
+    'mod/wikifilter:view'        => [
+        'captype'      => 'read',
+        'contextlevel' => CONTEXT_MODULE,
+        'archetypes'   => [
+            'guest' => CAP_ALLOW,
+            'user'  => CAP_ALLOW,
+        ],
+    ],
+];

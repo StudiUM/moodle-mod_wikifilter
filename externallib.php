@@ -25,8 +25,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 require_once("$CFG->libdir/externallib.php");
-require_once($CFG->dirroot.'/mod/wiki/locallib.php');
-require_once($CFG->dirroot.'/mod/wikifilter/lib.php');
+require_once($CFG->dirroot . '/mod/wiki/locallib.php');
+require_once($CFG->dirroot . '/mod/wikifilter/lib.php');
 
 /**
  * This is the external API for this report.

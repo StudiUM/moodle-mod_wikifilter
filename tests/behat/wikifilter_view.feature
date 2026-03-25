@@ -103,7 +103,7 @@ Feature: view wikifilter
   Scenario: view wikifilter as teacher1
     Given I am logged in as "teacher1"
     And I am on "Course 1" course homepage
-    When I follow "wikifilter 1"
+    When I click on "wikifilter 1" "link" in the ".modtype_wikifilter" "css_element"
     Then "page 1" "link" should be visible
     And "page 2" "link" should not be visible
     And "page 3" "link" should be visible
@@ -112,7 +112,7 @@ Feature: view wikifilter
   Scenario: view wikifilter as student1
     Given I am logged in as "student1"
     And I am on "Course 1" course homepage
-    When I follow "wikifilter 1"
+    When I click on "wikifilter 1" "link" in the ".modtype_wikifilter" "css_element"
     Then "page 1" "link" should be visible
     And "page 2" "link" should not be visible
     And "page 3" "link" should not be visible
